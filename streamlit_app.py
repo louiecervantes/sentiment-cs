@@ -120,7 +120,10 @@ def app():
             
             st.write('There were 20 responses and we display them in the table below.')
             st.dataframe(train, use_container_width=True)
-            
+   
+            st.write('Dataset shape: ')
+            st.text(df.shape)
+        
             st.write('Checking for null values. Do not proceed if we find a null value.')
             st.write(train.isnull().sum())
             
@@ -193,8 +196,8 @@ def app():
             result.loc[result['polarity']>=0.3, 'Sentiment'] = "Positive"
             result.loc[result['polarity']<0.3, 'Sentiment'] = "Negative"
 
-            result.loc[result['label']==1, 'Sentiment_label'] = 1
-            result.loc[result['label']==0, 'Sentiment_label'] = 0
+            result.loc[result['label']=="1", 'Sentiment_label'] = 1
+            result.loc[result['label']=="0", 'Sentiment_label'] = 0
             result.drop(['label'],axis=1, inplace=True)
             
             st.write('We view the dataset after the sentiment labels are updated.')
@@ -218,7 +221,7 @@ def app():
                     palette= 'viridis')
             st.pyplot(fig)
             
-            t.write('Display the word cloud of the negative sentiment')
+            st.write('Display the word cloud of the negative sentiment')
             
             text = " ".join(result[result['label'] == "0"]['text'])
             fig = plt.figure(figsize = (8, 4))
