@@ -193,8 +193,8 @@ def app():
             result = pd.concat([train, df1], axis=1)
             result.drop(['sentiment'],axis=1, inplace=True)
 
-            result.loc[result['polarity']>=0.3, 'Sentiment'] = "Positive"
-            result.loc[result['polarity']<0.3, 'Sentiment'] = "Negative"
+            result.loc[result['polarity']>=0.1, 'Sentiment'] = "Positive"
+            result.loc[result['polarity']<0.1, 'Sentiment'] = "Negative"
 
             result.loc[result['label']=="1", 'Sentiment_label'] = 1
             result.loc[result['label']=="0", 'Sentiment_label'] = 0
