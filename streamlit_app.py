@@ -113,9 +113,6 @@ def app():
         
         if st.button('Load Dataset'):  
             df = pd.read_csv('sentimentcs.csv')
-            st.write(df.head(20))
-            st.write('Dataset shape: ')
-            st.text(df.shape)
 
             #remember this very useful function to randomly rearrange the dataset
             train = shuffle(df)
