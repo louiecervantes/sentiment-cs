@@ -221,6 +221,15 @@ def app():
                     palette= 'viridis')
             st.pyplot(fig)
             
+            text = " ".join(result[result['label'] == 0]['text'])
+            fig = plt.figure(figsize = (8, 4))
+            wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
+                                  background_color="black", colormap= 'viridis').generate(text)
+            plt.imshow(wordcloud, interpolation="bilinear")
+            plt.axis('off')
+            st.pyplot(fig)
+            
+            
             # Save the dataframe to a CSV file
             csv = result.to_csv(index=False)
             if csv:
