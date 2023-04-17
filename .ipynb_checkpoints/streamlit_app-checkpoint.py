@@ -241,7 +241,7 @@ def app():
             df = pd.DataFrame(Counter(all_nodep_words).most_common(25), columns= ['Word', 'Frequency'])
 
             sns.set_context('notebook', font_scale= 1)
-            fig = gure(figsize=(8,4))
+            fig = plt.figure(figsize=(8,4))
             sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
             plt.title("Most Commonly Used Words of the Negative Sentiment")
             plt.xlabel("Frequency")
