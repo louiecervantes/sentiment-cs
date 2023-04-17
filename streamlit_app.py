@@ -118,7 +118,7 @@ def app():
             st.text(df.shape)
 
             #remember this very useful function to randomly rearrange the dataset
-            train = shuffle(train)
+            train = shuffle(df)
             
             
             st.write('There were 20 responses and we display them in the table below.')
@@ -221,7 +221,9 @@ def app():
                     palette= 'viridis')
             st.pyplot(fig)
             
-            text = " ".join(result[result['label'] == 0]['text'])
+            t.write('Display the word cloud of the negative sentiment')
+            
+            text = " ".join(result[result['label'] == "0"]['text'])
             fig = plt.figure(figsize = (8, 4))
             wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
                                   background_color="black", colormap= 'viridis').generate(text)
