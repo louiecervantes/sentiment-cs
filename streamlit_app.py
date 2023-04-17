@@ -225,18 +225,18 @@ def app():
             
             st.write('Display the word cloud of the negative sentiment')
             
-            text = " ".join(result[result['Sentiment'] == "Negative"]['text'])
+            text = " ".join(result[result['Sentiment'] == 'Negative']['text'])
             fig = plt.figure(figsize = (8, 4))
             wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
                                   background_color="black", colormap= 'viridis').generate(text)
-            plt.imshow(wordcloud, interpolation="bilinear")
+            plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
             st.pyplot(fig)
             
             all_nodep_words = []
             for sentence in result[result['Sentiment'] == 'Negative'['Text'].to_list():
                 for word in sentence.split():
-                    all_nodep_words.append(word)
+                   all_nodep_words.append(word)
 
             df = pd.DataFrame(Counter(all_nodep_words).most_common(25), columns= ['Word', 'Frequency'])
 
