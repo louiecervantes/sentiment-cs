@@ -223,7 +223,7 @@ def app():
             
             st.write('Display the word cloud of the negative sentiment')
             
-            text = " ".join(result[result['label'] == "0"]['text'])
+            text = " ".join(result[result['Sentiment_label'] == "0"]['text'])
             fig = plt.figure(figsize = (8, 4))
             wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
                                   background_color="black", colormap= 'viridis').generate(text)
