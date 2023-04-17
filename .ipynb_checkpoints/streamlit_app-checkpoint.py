@@ -234,7 +234,7 @@ def app():
             st.pyplot(fig)
             
             all_nodep_words = []
-            for sentence in result[result['Sentiment'] == 'Negative'['Text'].to_list():
+            for sentence in result[result['Sentiment'] == 'Negative']['Text'].to_list():
                 for word in sentence.split():
                    all_nodep_words.append(word)
 
