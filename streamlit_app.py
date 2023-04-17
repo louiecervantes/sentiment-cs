@@ -221,6 +221,8 @@ def app():
                     palette= 'viridis')
             st.pyplot(fig)
             
+            st.subheader('Negative Sentiment')
+            
             st.write('Display the word cloud of the negative sentiment')
             
             text = " ".join(result[result['Sentiment'] == "Negative"]['text'])
@@ -231,7 +233,21 @@ def app():
             plt.axis('off')
             st.pyplot(fig)
             
-            
+            all_nodep_words = []
+            for sentence in result[result['Sentiment'] == 'Negative'['Text'].to_list():
+                for word in sentence.split():
+                    all_nodep_words.append(word)
+
+            df = pd.DataFrame(Counter(all_nodep_words).most_common(25), columns= ['Word', 'Frequency'])
+
+            sns.set_context('notebook', font_scale= 1)
+            fig = gure(figsize=(8,4))
+            sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
+            plt.title("Most Commonly Used Words of the Negative Sentiment")
+            plt.xlabel("Frequency")
+            plt.ylabel("Words")
+            st.pyplot(fig)
+                                            
             # Save the dataframe to a CSV file
             csv = result.to_csv(index=False)
             if csv:
